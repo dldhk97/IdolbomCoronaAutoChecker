@@ -1,0 +1,8 @@
+Flask
+python-dotenv
+selenium
+beautifulsoup4
+requests
+wget
+schedule
+Selenium-Screenshot

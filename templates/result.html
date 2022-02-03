@@ -1,0 +1,16 @@
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>아이돌봄 코로나 체크 자동화 시스템</title>
+</head>
+<body>
+    <h1>제출 결과</h1>
+    <p>{{msg}}</p>
+    <a href="/">돌아가기</a>
+    <p>스크린샷</p>
+    <!-- <img src="static/image/1.jpg"> -->
+    {% if True %}
+    <img src="{{ url_for('static', filename=image_file) }}">
+    {% endif %}
+</body>
+</html>
