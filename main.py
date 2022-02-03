@@ -1,6 +1,10 @@
+import os
 from flask import Flask, render_template, request
 from autochecker import checker
 from datetime import datetime
+
+SERVER_IP = os.environ.get('SERVER_IP')
+SERVER_PORT = os.environ.get('SERVER_PORT')
 
 app = Flask(__name__)
 app.secret_key = 'mysecretkey'
@@ -24,6 +28,6 @@ def index():
         return render_template('result.html', image_file=image_file, msg=msg)
     
     return render_template('index.html', date=date)
-    
+
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=False)
+    app.run(host=SERVER_IP, port=SERVER_PORT, debug=False)

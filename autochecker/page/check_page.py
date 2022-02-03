@@ -2,6 +2,7 @@ import os
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from Screenshot import Screenshot_Clipping
+from ..log.logger import print_log
 
 def check_all(driver, date, teacher_name, child_name, capture_screenshot):
     _fill_elements(driver, date, teacher_name, child_name)
@@ -15,7 +16,12 @@ def check_all(driver, date, teacher_name, child_name, capture_screenshot):
     # 스크린샷 캡쳐
     if capture_screenshot:
         _screenshot_clipping(driver)
-    # _sumbit(driver, '//*[@id="pageNav"]/*[@menu="submitBtn"]')
+
+    if os.environ.get('DO_NOT_SUBMIT'):
+        print_log('Pass submit')
+        return
+
+    _sumbit(driver, '//*[@id="pageNav"]/*[@menu="submitBtn"]')
 
 def _fill_elements(driver, date, teacher_name, child_name):
     _fill_element(driver, '//*[@id="date_6"]', date)
