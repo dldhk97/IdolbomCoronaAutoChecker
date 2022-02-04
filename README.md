@@ -31,8 +31,6 @@ services:
     image: dldhk97/idolbom_auto_checker:0.1
     container_name: idolbom_auto_checker
     restart: unless-stopped
-    networks:
-      - MyNetwork
     ports:
       - "5000:5000"
     environment:
