@@ -32,6 +32,6 @@ CMD (sed -i '/^SERVER_IP=/c\SERVER_IP=$SERVER_IP' .env) && \
 (sed -i '/^SERVER_PORT=/c\SERVER_PORT=$SERVER_PORT' .env) && \
 (sed -i '/^SELF_CHECK_URL=/c\SELF_CHECK_URL=$SELF_CHECK_URL' .env) && \
 (sed -i '/^TEACHER_NAME=/c\TEACHER_NAME=$TEACHER_NAME' .env) && \
-(sed -i '/^DO_NOT_SUBMIT=/c\DO_NOT_SUBMIT=$DO_NOT_SUBMIT' .env) && \
+(sed -i '/^DO_NOT_SUBMIT=/c\DO_NOT_SUBMIT=$DO_NOT_SUBMIT' .env)
 
 ENTRYPOINT [ "python", "-u", "main.py" ]
