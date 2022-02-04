@@ -30,7 +30,7 @@ RUN pip3 install -r requirements.txt
 
 ENV SERVER_IP 127.0.0.1
 ENV SERVER_PORT 5000
-ENV SELF_CHECK_URL http://naver.me/abcdefg
+ENV SELF_CHECK_URL https://naver.me/abcdefg
 ENV TEACHER_NAME 홍길동
 ENV DO_NOT_SUBMIT False
 
