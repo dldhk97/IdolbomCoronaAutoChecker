@@ -1,3 +1,4 @@
+<!doctype html>
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         <script>
@@ -10,6 +11,7 @@
 <head>
         <meta charset="utf-8">
         <title>아이돌봄 코로나 체크 자동화 시스템</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 </head>
 <body>
     <h1>아이돌봄 코로나 체크 자동화 시스템</h1>
@@ -20,7 +22,14 @@
         <input type="text" name="child_name" value="홍길동"><br>
         <span>스크린샷 캡쳐(20초 이상 소요) : </span>
         <input type="checkbox" name="capture_screenshot" value="yyy">
-        <input type="submit">
+        <p></p>
+        <input id="content" type="submit" onclick="loading();">
     </form>
 </body>
 </html>
+
+<script type="text/javascript">
+function loading(){
+    $("#content").hide();       
+}
+</script>

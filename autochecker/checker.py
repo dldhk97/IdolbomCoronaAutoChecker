@@ -4,6 +4,7 @@ from .page.check_page import check_all
 from .log.logger import print_log
 
 def check(child_name, date, capture_screenshot):
+    is_succeed = False
     msg = '정상적으로 처리되었습니다(대상 : ' + child_name + ', 날짜 : ' + date + ')'
     try:
         _check_env()
@@ -17,6 +18,7 @@ def check(child_name, date, capture_screenshot):
 
         check_all(driver, date, teacher_name, child_name, capture_screenshot)
         print_log('Done!')
+        is_succeed = True
     except Exception as e:
         print_log(e)
         msg = '오류 발생 : ' + str(e)
@@ -25,7 +27,7 @@ def check(child_name, date, capture_screenshot):
     except:
         pass
 
-    return msg
+    return is_succeed, msg
 
 def _check_env():
     if os.path.exists('./.env') == False:
