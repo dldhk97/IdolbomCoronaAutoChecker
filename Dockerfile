@@ -24,12 +24,14 @@ RUN pip3 install -r requirements.txt
 
 ENV SERVER_IP 127.0.0.1
 ENV SERVER_PORT 5000
+ENV SELF_CHECK_URL http://naver.me/abcdefg
 ENV TEACHER_NAME 홍길동
 ENV DO_NOT_SUBMIT False
 
 CMD (sed -i '/^SERVER_IP=/c\SERVER_IP=$SERVER_IP' .env) && \
 (sed -i '/^SERVER_PORT=/c\SERVER_PORT=$SERVER_PORT' .env) && \
+(sed -i '/^SELF_CHECK_URL=/c\SELF_CHECK_URL=$SELF_CHECK_URL' .env) && \
 (sed -i '/^TEACHER_NAME=/c\TEACHER_NAME=$TEACHER_NAME' .env) && \
-(sed -i '/^DO_NOT_SUBMIT=/c\DO_NOT_SUBMIT=$DO_NOT_SUBMIT' .env)
+(sed -i '/^DO_NOT_SUBMIT=/c\DO_NOT_SUBMIT=$DO_NOT_SUBMIT' .env) && \
 
 ENTRYPOINT [ "python", "-u", "main.py" ]
