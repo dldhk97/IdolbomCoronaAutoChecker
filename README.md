@@ -10,7 +10,7 @@ Google Chrome, python3.8
 python3 -m pip install -r requirements.txt
 
 # setup .env
-Open .env file and put environment data
+Open .env file and fill environment
 
 # run
 python3 main.py
@@ -30,8 +30,13 @@ services:
   idolbom_auto_checker:
     image: dldhk97/idolbom_auto_checker:0.1
     container_name: idolbom_auto_checker
+    restart: unless-stopped
+    networks:
+      - MyNetwork
+    ports:
+      - "5000:5000"
     environment:
-      - SERVER_IP=127.0.0.1
+      - SERVER_IP=YOUR_SERVER_IP
       - SERVER_PORT=5000
       - TEACHER_NAME=홍길동
       - DO_NOT_SUBMIT=False
