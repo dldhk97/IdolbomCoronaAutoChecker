@@ -36,6 +36,7 @@ services:
     environment:
       - SERVER_IP=YOUR_SERVER_IP
       - SERVER_PORT=5000
+      - SELF_CHECK_URL=https://abcdefg.com
       - TEACHER_NAME=홍길동
       - DO_NOT_SUBMIT=False
 ```
