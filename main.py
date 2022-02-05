@@ -17,18 +17,19 @@ def index():
         child_name = request.form['child_name']
         date = request.form['date']
         capture_screenshot = False
-        image_file = 'image/succeed.jpg'
+        result_image = 'image/result.png'
+        paper_image = ''
 
         if 'capture_screenshot' in request.form:
             capture_screenshot = True
-            image_file = 'image/result.png'
+            paper_image = 'image/paper_image.png'
 
         is_succeed, msg = checker.check(child_name, date, capture_screenshot)
 
         if not is_succeed:
-            image_file = 'image/failed.jpg'
+            result_image = 'image/failed.jpg'
 
-        return render_template('result.html', image_file=image_file, msg=msg)
+        return render_template('result.html', result_image=result_image, msg=msg, paper_image=paper_image)
     
     return render_template('index.html', date=date)
 

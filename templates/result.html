@@ -10,7 +10,11 @@
     <p></p>
     <!-- <img src="static/image/1.jpg"> -->
     {% if True %}
-    <img src="{{ url_for('static', filename=image_file) }}">
+    <img src="{{ url_for('static', filename=result_image) }}">
+    {% endif %}
+    <p>제출지 스크린샷</p>
+    {% if True %}
+    <img src="{{ url_for('static', filename=paper_image) }}">
     {% endif %}
 </body>
 </html>
