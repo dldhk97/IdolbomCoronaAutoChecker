@@ -5,7 +5,7 @@ from .log.logger import print_log
 
 def check(child_name, date, capture_screenshot):
     is_succeed = False
-    msg = '정상적으로 처리되었습니다(대상 : ' + child_name + ', 날짜 : ' + date + ')'
+    msg = '정상적으로 처리되었습니다(대상 : ' + child_name + ', 날짜 : ' + date + ')\n'
     try:
         _check_env()
         driver = load_driver()
@@ -16,8 +16,7 @@ def check(child_name, date, capture_screenshot):
 
         teacher_name = os.environ.get('TEACHER_NAME')
 
-        check_all(driver, date, teacher_name, child_name, capture_screenshot)
-        print_log('Done!')
+        msg += check_all(driver, date, teacher_name, child_name, capture_screenshot)
         is_succeed = True
     except Exception as e:
         print_log(e)

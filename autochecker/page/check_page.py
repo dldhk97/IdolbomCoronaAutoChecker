@@ -23,12 +23,15 @@ def check_all(driver, date, teacher_name, child_name, capture_screenshot):
     else:
         sleep(1)
 
-    if not os.environ.get('DO_NOT_SUBMIT'):
+    if os.environ.get('DO_NOT_SUBMIT') == 'False':
         _sumbit(driver, '//*[@id="pageNav"]/*[@menu="submitBtn"]')
     else:
         print_log('Pass submit')
     
+    sleep(1)
     clip_current_screen(driver)
+    
+    return _get_finish_message(driver, '//*[@class="finishMessage"]')
 
 def _fill_elements(driver, date, teacher_name, child_name):
     _fill_element(driver, '//*[@id="date_6"]', date)
@@ -113,6 +116,19 @@ def _sumbit(driver, xpath):
         elem.send_keys(Keys.ENTER)
     except Exception as e:
         raise Exception('Failed to click : ' + xpath)
+
+def _get_finish_message(driver, xpath):
+    try:
+        _explicit_wait(driver, xpath)
+        elem = driver.find_element(By.XPATH, xpath)
+        
+        finish_message = elem.text
+        print_log(finish_message)
+
+        return finish_message
+
+    except Exception as e:
+        raise Exception('Failed to submit : ' + str(e))
 
 def _explicit_wait(driver, xpath):
     try:
