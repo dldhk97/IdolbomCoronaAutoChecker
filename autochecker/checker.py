@@ -1,9 +1,10 @@
 import os
 from .driver.loader import load_driver
-from .page.check_page import check_all
+from .page.page_checker_factory import create_page_checker
 from .log.logger import print_log
 
-def check(child_name, date, capture_screenshot):
+
+def check(child_name, date, capture_paper):
     is_succeed = False
     msg = '정상적으로 처리되었습니다(대상 : ' + child_name + ', 날짜 : ' + date + ')\n'
     try:
@@ -14,10 +15,11 @@ def check(child_name, date, capture_screenshot):
         _open_page(driver, url)
         print_log('Page open succeed!')
 
-        teacher_name = os.environ.get('TEACHER_NAME')
+        page_checker = create_page_checker(driver, date, child_name, capture_paper, url)
 
-        msg += check_all(driver, date, teacher_name, child_name, capture_screenshot)
+        msg += page_checker.check_all()
         is_succeed = True
+
     except Exception as e:
         print_log(e)
         msg = '오류 발생 : ' + str(e)

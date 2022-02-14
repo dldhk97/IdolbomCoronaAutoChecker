@@ -16,15 +16,15 @@ def index():
     if request.method == 'POST':
         child_name = request.form['child_name']
         date = request.form['date']
-        capture_screenshot = False
+        capture_paper = False
         result_image = 'image/result.png'
         paper_image = ''
 
-        if 'capture_screenshot' in request.form:
-            capture_screenshot = True
+        if 'capture_paper' in request.form:
+            capture_paper = True
             paper_image = 'image/paper_image.png'
 
-        is_succeed, msg = checker.check(child_name, date, capture_screenshot)
+        is_succeed, msg = checker.check(child_name, date, capture_paper)
 
         if not is_succeed:
             result_image = 'image/failed.jpg'
