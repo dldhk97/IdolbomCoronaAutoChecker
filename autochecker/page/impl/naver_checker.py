@@ -1,5 +1,5 @@
 from ..page_checker import PageChecker
-from ..util.selenium_util import explicit_wait
+from .selenium_util import explicit_wait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from ...log.logger import print_log
@@ -43,7 +43,6 @@ class NaverChecker(PageChecker):
     def sumbit(self):
         if not self.do_not_submit:
             self._sumbit(self.driver, '//*[@id="pageNav"]/*[@menu="submitBtn"]')
-        
 
     def capture_mid_process(self):
         return super().capture_mid_process()

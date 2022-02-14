@@ -11,19 +11,13 @@ class PageChecker(metaclass=ABCMeta):
     capture_paper = None
 
     def check_all(self):
-        # fill text
         self.fill_elements()
-
-        # click radio
         self.click_radios()
-
-        # capture mid-process paper
+        
         self.capture_mid_process()
 
-        # submit
         self.sumbit()
 
-        # capture result
         self.capture_result()
 
         return self.get_finish_message()
