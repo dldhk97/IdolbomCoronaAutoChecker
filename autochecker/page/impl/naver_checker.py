@@ -43,6 +43,8 @@ class NaverChecker(PageChecker):
     def sumbit(self):
         if not self.do_not_submit:
             self._sumbit(self.driver, '//*[@id="pageNav"]/*[@menu="submitBtn"]')
+            return
+        print_log('submit passed')
 
     def capture_mid_process(self):
         return super().capture_mid_process()
