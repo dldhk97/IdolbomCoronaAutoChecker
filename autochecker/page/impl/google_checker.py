@@ -1,5 +1,3 @@
-import datetime
-from time import strftime
 from ..page_checker import PageChecker
 from .selenium_util import explicit_wait
 from selenium.webdriver.common.by import By
@@ -39,7 +37,7 @@ class GoogleChecker(PageChecker):
         self._click_radio(self.driver, '//div[@aria-label="마스크를 착용하고 돌봄활동을 하였는가?"]', True)
         self._click_radio(self.driver, '//div[@aria-label="비누를 이용하여 30초 이상 꼼꼼히, 자주 손을 씻었는가?(돌보가정 도착 후 , 음식 제공시, 기저위 및 변기 사용 전후, 실외 활동 후)"]', True)
         self._click_radio(self.driver, '//div[@aria-label="대상아동에 열(37.5도 이상) 또는 발열감이 있는가?"]', False)
-        self._click_radio(self.driver, '//div[@aria-label="대상아동에게 기친, 인후통, 호흡곤란 증상이 있는가?"]', False)
+        self._click_radio(self.driver, '//div[@aria-label="대상아동에게 기침, 인후통, 호흡곤란 증상이 있는가?"]', False)
         self._click_radio(self.driver, '//div[@aria-label="대상가정의 창문을 열어 환기를 했는가?"]', True)
         self._click_radio(self.driver, '//div[@aria-label="돌봄활동 중 대상가정의 방문자(택배기사, 이웃 등)의 정보를 보조자에게 공유하였는가?"]', True)
         self._click_radio(self.driver, '//div[@aria-label="코로나 19 감염증 예방수칙을 이용가정과 공유하고 안내하였는가?"]', True)
@@ -47,6 +45,8 @@ class GoogleChecker(PageChecker):
     def sumbit(self):
         if not self.do_not_submit:
             self._sumbit(self.driver, '//span[contains(text(),"제출")]/../..')
+            return
+        print_log('submit passed')
 
     def capture_mid_process(self):
         return super().capture_mid_process()
