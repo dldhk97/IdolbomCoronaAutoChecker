@@ -35,7 +35,7 @@ class GoogleChecker(PageChecker):
 
         self._click_radio(self.driver, '//div[@aria-label="휴대용 손소독제를 사용 후 문을 열었는가?"]', True)
         self._click_radio(self.driver, '//div[@aria-label="마스크를 착용하고 돌봄활동을 하였는가?"]', True)
-        self._click_radio(self.driver, '//div[@aria-label="비누를 이용하여 30초 이상 꼼꼼히, 자주 손을 씻었는가?(돌보가정 도착 후 , 음식 제공시, 기저위 및 변기 사용 전후, 실외 활동 후)"]', True)
+        self._click_radio(self.driver, '//div[@aria-label="비누를 이용하여 30초 이상 꼼꼼히, 자주 손을 씻었는가?(돌보가정 도착 후 , 음식 제공시, 기저귀갈기 및 변기 사용 전후, 실외 활동 후)"]', True)
         self._click_radio(self.driver, '//div[@aria-label="대상아동에 열(37.5도 이상) 또는 발열감이 있는가?"]', False)
         self._click_radio(self.driver, '//div[@aria-label="대상아동에게 기침, 인후통, 호흡곤란 증상이 있는가?"]', False)
         self._click_radio(self.driver, '//div[@aria-label="대상가정의 창문을 열어 환기를 했는가?"]', True)
