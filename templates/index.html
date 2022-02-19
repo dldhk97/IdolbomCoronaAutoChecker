@@ -112,7 +112,7 @@
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
 											<h3>제출 정보</h3>
-											<form action="/" method="post">
+											<form action="/" method="post" onsubmit="loading();">
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="child_name">아동명</label>
@@ -138,7 +138,7 @@
 
 												<div class="row form-group">
 													<div class="col-md-12">
-														<input id="submit" type="submit" class="btn btn-primary btn-block" value="제출하기" onclick="loading();">
+														<input id="submit" type="submit" class="btn btn-primary btn-block" value="제출하기">
 													</div>
 												</div>
 											</form>	
