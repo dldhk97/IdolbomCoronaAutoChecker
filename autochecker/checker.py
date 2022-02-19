@@ -6,7 +6,7 @@ from .log.logger import print_log
 
 def check(child_name, date, capture_paper):
     is_succeed = False
-    msg = '정상적으로 처리되었습니다(대상 : ' + child_name + ', 날짜 : ' + date + ')\n'
+    result_msg = '제출 완료'
     try:
         _check_env()
         driver = load_driver()
@@ -17,18 +17,19 @@ def check(child_name, date, capture_paper):
 
         page_checker = create_page_checker(driver, date, child_name, capture_paper, url)
 
-        msg += page_checker.check_all()
+        finish_msg = page_checker.check_all()
         is_succeed = True
 
     except Exception as e:
         print_log(e)
-        msg = '오류 발생 : ' + str(e)
+        result_msg = '오류 발생'
+        finish_msg = str(e)
     try:
         driver.quit()
     except:
         pass
 
-    return is_succeed, msg
+    return is_succeed, result_msg, finish_msg
 
 def _check_env():
     if os.path.exists('./.env') == False:

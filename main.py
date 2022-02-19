@@ -22,15 +22,15 @@ def index():
             capture_paper = True
             paper_image = 'image/paper_image.png'
 
-        is_succeed, msg = checker.check(child_name, date, capture_paper)
+        is_succeed, result_msg, finish_msg = checker.check(child_name, date, capture_paper)
+        info_msg = child_name + '(' + date + ')'
 
         if not is_succeed:
             result_image = 'image/failed.jpg'
 
-        return render_template('result.html', result_image=result_image, msg=msg, paper_image=paper_image)
+        return render_template('result.html', result_image=result_image, result_msg=result_msg, info_msg=info_msg, finish_msg=finish_msg, paper_image=paper_image)
     
     return render_template('index.html', date=datetime.today().strftime('%Y.%m.%d'))
-    # return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(host=SERVER_IP, port=SERVER_PORT, debug=False)

@@ -1,20 +1,207 @@
+<!DOCTYPE HTML>
+<!--
+	Traveler by freehtml5.co
+	Twitter: http://twitter.com/fh5co
+	URL: http://freehtml5.co
+-->
 <html>
-<head>
-        <meta charset="utf-8">
-        <title>아이돌봄 코로나 체크 자동화 시스템</title>
-</head>
-<body>
-    <h1>제출 결과</h1>
-    <p>{{msg}}</p>
-    <a href="/">돌아가기</a>
-    <p></p>
-    <!-- <img src="static/image/1.jpg"> -->
-    {% if True %}
-    <img src="{{ url_for('static', filename=result_image) }}">
-    {% endif %}
-    <p>제출지 스크린샷</p>
-    {% if True %}
-    <img src="{{ url_for('static', filename=paper_image) }}">
-    {% endif %}
-</body>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ICSAS &mdash; 아이돌봄 코로나 자가진단 자동화 시스템</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="아이돌봄 코로나 자가진단 자동화 시스템" />
+	<meta name="keywords" content="아이돌봄 코로나 자가진단 자동화" />
+	<meta name="author" content="dldhk97" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/animate.css') }}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/themify-icons.css') }}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.min.css') }}">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+	<!-- Modernizr JS -->
+	<script src="{{ url_for('static', filename='js/modernizr-2.6.2.min.js') }}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="{ url_for('static',filename='js/respond.min.js') }"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+		
+	<div class="gtco-loader"></div>
+	
+	<div id="page">
+
+	
+	<!-- <div class="page-inner"> -->
+	<nav class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+			
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<div id="gtco-logo"><a href="/">ICSAS <em>.</em></a></div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+						<li><a href="/">돌아가기</a></li>
+					</ul>	
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+	
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(static/images/img_2.jpg)">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0 text-center">
+					<div class="row row-mt-15em">
+						<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
+							<h1>{{result_msg}}</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<div id="gtco-section">
+		<div class="gtco-container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>{{info_msg}}</h2>
+					<p>{{finish_msg}}</p>
+				</div>
+			</div>
+
+			
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2">
+					{% if True %}
+					<h2>제출 화면</h2>
+					<img src="{{ url_for('static', filename=result_image) }}" alt="result_image" class="img-responsive">
+					{% endif %}
+					<hr>
+					{% if True %}
+					<h2>제출지 스크린샷</h2>
+					<img src="{{ url_for('static', filename=paper_image) }}" alt="paper_image" class="img-responsive">
+					{% endif %}
+					<form class="form-inline">
+						<div class="col-md-6 col-sm-6"></div>
+						<div class="col-md-6 col-sm-6 text-right">
+							<a href="/" class="btn btn-primary btn-sm">돌아가기</a>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer id="gtco-footer" role="contentinfo">
+		<div class="gtco-container">
+			<div class="row row-p	b-md">
+
+				<div class="col-md-4">
+					<div class="gtco-widget">
+						<h3>시스템에 대하여</h3>
+						<p>매번 설문지를 체크해서 제출하는 일은 매우 귀찮은 일입니다. 이 시스템을 통해 간편하게 설문을 제출해 보세요! 이 시스템은 광고가 없으며 무료로 사용 가능합니다.</p>
+					</div>
+				</div>
+
+				<div class="col-md-2 col-md-push-1"></div>
+
+				<div class="col-md-2 col-md-push-1"></div>
+
+				<div class="col-md-3 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>개발자 접촉</h3>
+						<ul class="gtco-quick-contact">
+							<li><a href="mailto:dldhk97@gmail.com"><i class="icon-mail2"></i> dldhk97@gmail.com</a></li>
+							<li><a href="https://github.com/dldhk97"><i class="icon-github"></i> https://github.com/dldhk97</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12">
+					<p class="pull-left">
+						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small> 
+						<small class="block">Designed by <a href="https://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	<!-- </div> -->
+
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+	<!-- jQuery Easing -->
+	<script src="{{ url_for('static',filename='js/jquery.easing.1.3.js') }}"></script>
+	<!-- Bootstrap -->
+	<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+	<!-- Waypoints -->
+	<script src="{{ url_for('static',filename='js/jquery.waypoints.min.js') }}"></script>
+	<!-- Carousel -->
+	<script src="{{ url_for('static',filename='js/owl.carousel.min.js') }}"></script>
+	<!-- countTo -->
+	<script src="{{ url_for('static',filename='js/jquery.countTo.js') }}"></script>
+
+	<!-- Stellar Parallax -->
+	<script src="{{ url_for('static',filename='js/jquery.stellar.min.js') }}"></script>
+
+	<!-- Magnific Popup -->
+	<script src="{{ url_for('static',filename='js/jquery.magnific-popup.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/magnific-popup-options.js') }}"></script>
+	
+	<!-- Datepicker -->
+	<script src="{{ url_for('static',filename='js/bootstrap-datepicker.min.js') }}"></script>
+	
+	<!-- Main -->
+	<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+
+	</body>
 </html>
+
