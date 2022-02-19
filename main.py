@@ -11,8 +11,6 @@ app.secret_key = 'mysecretkey'
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    date = datetime.today().strftime('%Y.%m.%d')
-
     if request.method == 'POST':
         child_name = request.form['child_name']
         date = request.form['date']
@@ -20,7 +18,7 @@ def index():
         result_image = 'image/result.png'
         paper_image = ''
 
-        if 'capture_paper' in request.form:
+        if request.form['capture_paper'] == 'yyy':
             capture_paper = True
             paper_image = 'image/paper_image.png'
 
@@ -31,7 +29,8 @@ def index():
 
         return render_template('result.html', result_image=result_image, msg=msg, paper_image=paper_image)
     
-    return render_template('index.html', date=date)
+    return render_template('index.html', date=datetime.today().strftime('%Y.%m.%d'))
+    # return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(host=SERVER_IP, port=SERVER_PORT, debug=False)
