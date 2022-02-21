@@ -1,5 +1,9 @@
 # IdolbomCoronaAutoChecker
-아이돌봄 서비스 방문 전후 자가 건강 체크리스트 자동 체크 서비스
+![작업중](https://user-images.githubusercontent.com/20237869/154913463-8419239d-d1a0-4eab-84d2-62551327e98d.png)
+
+아이돌봄 서비스 방문 전후 자가 건강 체크리스트 자동 체크 서비스입니다.
+
+.env에 설정된 URL에 따라 구글 설문, 네이버 설문지를 자동으로 체크하여 제출합니다.
 
 ## Requirements
 Google Chrome, python3.8
