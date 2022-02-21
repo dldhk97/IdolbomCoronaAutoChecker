@@ -12,8 +12,8 @@ app.secret_key = 'mysecretkey'
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-        child_name = request.form['child_name']
-        date = request.form['date']
+        child_name = request.form['child_name'].strip()
+        date = request.form['date'].strip()
         capture_paper = False
         result_image = 'image/result.png'
         paper_image = ''
