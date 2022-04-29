@@ -4,11 +4,9 @@ from .downloader import download_driver
 from .platform_util import is_driver_excutable_file_exists, get_driver_excutable_file_path
 from ..log.logger import print_log
 
-def load_driver():
-    download_driver()
-
-    if not is_driver_excutable_file_exists():
-        raise Exception('No chromedriver!')
+def load_driver(driver_version, retry=0):
+    if not is_driver_excutable_file_exists() or retry > 0:
+        download_driver(driver_version)
 
     options = _get_options()
     
@@ -21,7 +19,18 @@ def load_driver():
        print_log('Failed to chmod driver')
        print_log(e)
 
-    return webdriver.Chrome(executable_path=driver_path, chrome_options=options)
+    try:
+        return webdriver.Chrome(executable_path=driver_path, chrome_options=options)
+    except Exception as e:
+        if retry == 0 and 'session not created: This version of ChromeDriver only supports Chrome version' in str(e):
+            current_version = _find_current_driver_version(str(e))
+            return load_driver(current_version, retry + 1)
+        raise e
+
+def _find_current_driver_version(msg):
+    start = msg.find('Current browser version is') + 27
+    end = msg.find(' with binary path')
+    return msg[start:end]
 
 def _get_options():
     options = webdriver.ChromeOptions()

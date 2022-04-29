@@ -34,5 +34,5 @@ def index():
     return render_template('index.html', date=datetime.today().strftime('%Y.%m.%d'))
 
 if __name__ == '__main__':
-    load_driver()
+    load_driver(os.environ.get('CHROME_DRIVER_VERSION'))
     app.run(host=SERVER_IP, port=SERVER_PORT, debug=False)

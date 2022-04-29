@@ -1,3 +1,4 @@
+from lib2to3.pgen2 import driver
 import requests
 import os
 import wget
@@ -5,17 +6,13 @@ import zipfile
 from .platform_util import get_archive_file_name_by_platform, is_driver_excutable_file_exists
 from ..log.logger import print_log
 
-def download_driver():
-    if is_driver_excutable_file_exists():
-        return
-    print_log('chromedriver does not exists!')
+def download_driver(driver_version):
+    print_log('chromedriver download start!')
 
-    if not os.environ.get('CHROME_DRIVER_VERSION'):
-        latest_version = _get_latest_version()
-    else:
-        latest_version = os.environ.get('CHROME_DRIVER_VERSION')
-        
-    base_url = os.environ.get('CHROME_DRIVER_URL') + latest_version + '/'
+    if not driver_version:
+        driver_version = _get_latest_version()
+
+    base_url = os.environ.get('CHROME_DRIVER_URL') + driver_version + '/'
     file_name = get_archive_file_name_by_platform()
     download_url = base_url + file_name
 

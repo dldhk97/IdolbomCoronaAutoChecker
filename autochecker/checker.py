@@ -9,7 +9,7 @@ def check(child_name, date, capture_paper):
     result_msg = '제출 완료'
     try:
         _check_env()
-        driver = load_driver()
+        driver = load_driver(os.environ.get('CHROME_DRIVER_VERSION'))
 
         url = os.environ.get('SELF_CHECK_URL')
         _open_page(driver, url)
