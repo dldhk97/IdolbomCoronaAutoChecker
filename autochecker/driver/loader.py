@@ -19,13 +19,21 @@ def load_driver(driver_version, retry=0):
        print_log('Failed to chmod driver')
        print_log(e)
 
+    failed_exception = None
     try:
         return webdriver.Chrome(executable_path=driver_path, chrome_options=options)
     except Exception as e:
-        if retry == 0 and 'session not created: This version of ChromeDriver only supports Chrome version' in str(e):
-            current_version = _find_current_driver_version(str(e))
-            return load_driver(current_version, retry + 1)
-        raise e
+        failed_exception = e
+
+    if not ('session not created: This version of ChromeDriver only supports Chrome version' in str(failed_exception)):
+        raise failed_exception
+    
+    if retry == 0:
+        return load_driver(driver_version, retry + 1)
+    elif retry == 1:
+        return load_driver(_find_current_driver_version(str(failed_exception)), retry + 1)    
+    print_log('Failed to load driver : available driver not found')
+    raise failed_exception
 
 def _find_current_driver_version(msg):
     start = msg.find('Current browser version is') + 27
