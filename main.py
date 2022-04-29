@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request
 from autochecker import checker
 from datetime import datetime
+from autochecker.driver.loader import load_driver
 
 SERVER_IP = os.environ.get('SERVER_IP')
 SERVER_PORT = os.environ.get('SERVER_PORT')
@@ -33,4 +34,5 @@ def index():
     return render_template('index.html', date=datetime.today().strftime('%Y.%m.%d'))
 
 if __name__ == '__main__':
+    load_driver()
     app.run(host=SERVER_IP, port=SERVER_PORT, debug=False)

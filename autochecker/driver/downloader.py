@@ -10,7 +10,11 @@ def download_driver():
         return
     print_log('chromedriver does not exists!')
 
-    latest_version = _get_latest_version()
+    if not os.environ.get('CHROME_DRIVER_VERSION'):
+        latest_version = _get_latest_version()
+    else:
+        latest_version = os.environ.get('CHROME_DRIVER_VERSION')
+        
     base_url = os.environ.get('CHROME_DRIVER_URL') + latest_version + '/'
     file_name = get_archive_file_name_by_platform()
     download_url = base_url + file_name
