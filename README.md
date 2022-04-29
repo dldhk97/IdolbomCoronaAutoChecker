@@ -43,7 +43,9 @@ services:
       - SELF_CHECK_URL=https://abcdefg.com
       - TEACHER_NAME=홍길동
       - DO_NOT_SUBMIT=False
-      - CHROME_DRIVER_VERSION=
+      - CHROME_DRIVER_URL=https://chromedriver.storage.googleapis.com/
+      - CHROME_DRIVER_VERSION=Auto
+      - HEADLESS_MODE=True
 ```
 
 ### run

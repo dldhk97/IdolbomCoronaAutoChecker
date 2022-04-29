@@ -15,7 +15,8 @@ ENV SELF_CHECK_URL https://naver.me/abcdefg
 ENV TEACHER_NAME 홍길동
 ENV DO_NOT_SUBMIT False
 ENV CHROME_DRIVER_URL https://chromedriver.storage.googleapis.com/
-ENV CHROME_DRIVER_VERSION None
+ENV CHROME_DRIVER_VERSION Auto
+ENV HEADLESS_MODE True
 
 CMD (sed -i '/^SERVER_IP=/c\SERVER_IP=$SERVER_IP' .env) && \
 (sed -i '/^SERVER_PORT=/c\SERVER_PORT=$SERVER_PORT' .env) && \
@@ -23,6 +24,7 @@ CMD (sed -i '/^SERVER_IP=/c\SERVER_IP=$SERVER_IP' .env) && \
 (sed -i '/^TEACHER_NAME=/c\TEACHER_NAME=$TEACHER_NAME' .env) && \
 (sed -i '/^DO_NOT_SUBMIT=/c\DO_NOT_SUBMIT=$DO_NOT_SUBMIT' .env) && \
 (sed -i '/^CHROME_DRIVER_URL=/c\CHROME_DRIVER_URL=$CHROME_DRIVER_URL' .env) && \
-(sed -i '/^CHROME_DRIVER_VERSION=/c\CHROME_DRIVER_VERSION=$CHROME_DRIVER_VERSION' .env)
+(sed -i '/^CHROME_DRIVER_VERSION=/c\CHROME_DRIVER_VERSION=$CHROME_DRIVER_VERSION' .env) && \
+(sed -i '/^HEADLESS_MODE=/c\HEADLESS_MODE=$HEADLESS_MODE' .env)
 
 ENTRYPOINT [ "python", "-u", "main.py" ]
