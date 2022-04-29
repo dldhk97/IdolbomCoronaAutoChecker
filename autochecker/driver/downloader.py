@@ -9,7 +9,7 @@ from ..log.logger import print_log
 def download_driver(driver_version):
     print_log('chromedriver download start!')
 
-    if not driver_version:
+    if not driver_version or driver_version is None or driver_version is 'None':
         driver_version = _get_latest_version()
 
     base_url = os.environ.get('CHROME_DRIVER_URL') + driver_version + '/'
