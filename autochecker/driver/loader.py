@@ -31,11 +31,13 @@ def load_driver(driver_version, retry=0):
     if retry == 0:
         return load_driver(driver_version, retry + 1)
     elif retry == 1:
-        return load_driver(_find_current_driver_version(str(failed_exception)), retry + 1)    
+        installed_driver_version = _find_installed_driver_version(str(failed_exception))
+        print_log('installed driver version : ' + installed_driver_version)
+        return load_driver(installed_driver_version, retry + 1)
     print_log('Failed to load driver : available driver not found')
     raise failed_exception
 
-def _find_current_driver_version(msg):
+def _find_installed_driver_version(msg):
     start = msg.find('Current browser version is') + 27
     end = msg.find(' with binary path')
     return msg[start:end]
