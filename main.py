@@ -1,4 +1,5 @@
 import os
+import re
 from flask import Flask, render_template, request
 from autochecker import checker
 from datetime import datetime
@@ -34,5 +35,8 @@ def index():
     return render_template('index.html', date=datetime.today().strftime('%Y.%m.%d'))
 
 if __name__ == '__main__':
-    load_driver(os.environ.get('CHROME_DRIVER_VERSION'))
-    app.run(host=SERVER_IP, port=SERVER_PORT, debug=False)
+    try:
+        load_driver(os.environ.get('CHROME_DRIVER_VERSION'))
+        app.run(host=SERVER_IP, port=SERVER_PORT, debug=False)
+    except Exception as e:
+        print(e)
