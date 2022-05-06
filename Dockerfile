@@ -1,4 +1,4 @@
-FROM dldhk97/python-chrome-kor-docker:3.8_amd64
+FROM dldhk97/python-chrome-kor-docker:3.8_arm64
 
 LABEL maintainer="dldhk97@naver.com"
 

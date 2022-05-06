@@ -70,6 +70,7 @@ class GoogleChecker(PageChecker):
             print_log(elem.accessible_name + ' : ' + text)
             
         except Exception as e:
+            print_log(str(e))
             raise Exception('Failed to fill : ' + xpath)
 
     def _fill_validation(self, elem, text):

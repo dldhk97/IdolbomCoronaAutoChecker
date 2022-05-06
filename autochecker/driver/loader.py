@@ -10,7 +10,8 @@ def load_driver(driver_version, retry=0):
 
     options = _get_options()
     
-    driver_path = get_driver_excutable_file_path()
+    driver_path = '/usr/bin/chromedriver'
+    # driver_path = get_driver_excutable_file_path()
     print_log('chrome_driver_path=' + driver_path)
 
     try:
